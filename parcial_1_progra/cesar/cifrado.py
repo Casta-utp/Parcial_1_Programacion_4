@@ -1,6 +1,6 @@
 class CifradoCesar:
 
-    lista_letras = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
+    lista_letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     lista_letras = lista_letras + lista_letras.lower()
     lista_mensajes = []
 
