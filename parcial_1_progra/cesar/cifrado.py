@@ -1,22 +1,24 @@
 class CifradoCesar:
-
-    lista_letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    lista_letras = lista_letras + lista_letras.lower()
+    lista_mayusculas = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    lista_minusculas = lista_mayusculas.lower()
     lista_mensajes = []
 
     def __init__(self, mensaje, desplazamiento, cifrado):
         self.mensaje = mensaje
         self.desplazamiento = desplazamiento
         self.cifrado = cifrado
-    
+
     def cifrar(self, mensaje, desplazamiento):
         mensaje_cifrado = ""
         for letra in mensaje:
-            if letra in self.lista_letras:
-                indice = self.lista_letras.index(letra)
-                mensaje_cifrado += self.lista_letras[(indice + desplazamiento) % len(self.lista_letras)]
+            if letra in self.lista_mayusculas:
+                indice = self.lista_mayusculas.index(letra)
+                mensaje_cifrado += self.lista_mayusculas[(indice + desplazamiento) % len(self.lista_mayusculas)]
+            elif letra in self.lista_minusculas:
+                indice = self.lista_minusculas.index(letra)
+                mensaje_cifrado += self.lista_minusculas[(indice + desplazamiento) % len(self.lista_minusculas)]
             else:
-                mensaje_cifrado += letra
+                mensaje_cifrado += letra  # Mantiene espacios, números y símbolos sin cambios
         self.lista_mensajes.append(mensaje_cifrado)
         print(mensaje_cifrado)
         return mensaje_cifrado
@@ -24,11 +26,14 @@ class CifradoCesar:
     def descifrar(self, mensaje, desplazamiento):
         mensaje_descifrado = ""
         for letra in mensaje:
-            if letra in self.lista_letras:
-                indice = self.lista_letras.index(letra)
-                mensaje_descifrado += self.lista_letras[(indice - desplazamiento) % len(self.lista_letras)]
+            if letra in self.lista_mayusculas:
+                indice = self.lista_mayusculas.index(letra)
+                mensaje_descifrado += self.lista_mayusculas[(indice - desplazamiento) % len(self.lista_mayusculas)]
+            elif letra in self.lista_minusculas:
+                indice = self.lista_minusculas.index(letra)
+                mensaje_descifrado += self.lista_minusculas[(indice - desplazamiento) % len(self.lista_minusculas)]
             else:
-                mensaje_descifrado += letra
+                mensaje_descifrado += letra  # Mantiene espacios, números y símbolos sin cambios
         print(mensaje_descifrado)
         return mensaje_descifrado
 
