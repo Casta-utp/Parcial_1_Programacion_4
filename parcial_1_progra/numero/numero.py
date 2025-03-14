@@ -30,7 +30,9 @@ def descomponer_numero(numero):
     return primera_cifra, segunda_cifra, tercera_cifra, cuarta_cifra
 
 def es_multiplo(primera_cifra, cuarta_cifra):
-    if primera_cifra % cuarta_cifra == 0:
+    if cuarta_cifra == 0:
+        print(f"No se puede determinar si {primera_cifra} es multiplo de {cuarta_cifra} porque la cuarta cifra es 0")
+    elif primera_cifra % cuarta_cifra == 0:
         print(f"{primera_cifra} es multiplo de {cuarta_cifra}")
     else:
         print(f"{primera_cifra} no es multiplo de {cuarta_cifra}")
