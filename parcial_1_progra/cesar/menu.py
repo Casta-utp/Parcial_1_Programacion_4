@@ -3,7 +3,6 @@ from cifrado import CifradoCesar
 def menu():
     print("Bienvenido al cifrado César")
     cifrado_cesar = CifradoCesar("", 0, "")  # Se mantiene una única instancia
-    cifrado_cesar.cargar_lista()  # Cargar mensajes previos al iniciar
 
     while True:
         print("\n1. Cifrar un mensaje")
@@ -28,18 +27,20 @@ def menu():
             print(f"Mensaje descifrado: {mensaje_descifrado}")
 
         elif opcion == "3":
-            index = int(input("Introduzca el índice del mensaje a descifrar: "))
-            desplazamiento = int(input("Introduzca el desplazamiento: "))
-
             if len(cifrado_cesar.lista_mensajes) == 0:
                 print("No hay mensajes en la lista. Cargue mensajes o cifre uno primero.")
-            elif 0 <= index < len(cifrado_cesar.lista_mensajes):
-                cifrado_cesar.descifrar_lista(index, desplazamiento)
             else:
-                print("Índice fuera de rango.")
+                index = int(input("Introduzca el índice del mensaje a descifrar: "))
+                desplazamiento = int(input("Introduzca el desplazamiento: "))
+
+                if 0 <= index < len(cifrado_cesar.lista_mensajes):
+                    cifrado_cesar.descifrar_lista(index, desplazamiento)
+                else:
+                    print("Índice fuera de rango.")
 
         elif opcion == "4":
             cifrado_cesar.guardar_lista()
+            print("Lista guardada correctamente.")
 
         elif opcion == "5":
             cifrado_cesar.cargar_lista()
